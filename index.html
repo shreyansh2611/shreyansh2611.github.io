@@ -1,1 +1,403 @@
-Hello world
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style55.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>DIGI MUSICS</title>
+</head>
+
+<body id="#body">
+    <script> var res = "deelo"; </script>
+         <audio class="audioe" id="nam" src="a.mp3" controls hidden>
+         </audio>
+         
+         
+         
+    <?php
+    $sqlr = $db->query("SELECT * from music ORDER BY music_id DESC");
+            while ($data = $sqlr->fetch_assoc()){
+                echo'     
+<div class="audio-player" id="audio-player'.$data['music_id'].'">
+<a href="#" class="close" onclick="off1('.$data['music_id'].')"></a>
+    <h1 style="    color: green;
+    font-weight: bold; margin-bottom:20px;">'.$data['name'].'</h1>
+    <br><hr><br>
+  <div class="icon-container">
+    <img class="audio-icon" id="audio-icon'.$data['music_id'].'" src="'.$data['image'].'" alt="image">
+  </div>
+  <audio class="audioe" id="audio'.$data['music_id'].'" src="'.$data['file'].'"></audio>
+  <div class="controls">
+    <input type="range" class="timeline" id="timeline'.$data['music_id'].'" max="100" value="0">
+  </div>
+  <div style="
+    display: flex;
+    justify-content: center;
+    align-items: center;
+">
+    <button class="player-button" id="player'.$data['music_id'].'" style="width:80px;" onclick="idy ='.$data['music_id'].'; functoplay(idy);">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="yellow">
+  <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zM7 8a1 1 0 012 0v4a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v4a1 1 0 102 0V8a1 1 0 00-1-1z" clip-rule="evenodd" />
+</svg>
+    </button>
+    <button class="sound-button" id="sound-button'.$data['music_id'].'" style="margin-left:30vw; width:80px;">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="aqua">
+  <path fill-rule="evenodd" d="M9.383 3.076A1 1 0 0110 4v12a1 1 0 01-1.707.707L4.586 13H2a1 1 0 01-1-1V8a1 1 0 011-1h2.586l3.707-3.707a1 1 0 011.09-.217zM14.657 2.929a1 1 0 011.414 0A9.972 9.972 0 0119 10a9.972 9.972 0 01-2.929 7.071 1 1 0 01-1.414-1.414A7.971 7.971 0 0017 10c0-2.21-.894-4.208-2.343-5.657a1 1 0 010-1.414zm-2.829 2.828a1 1 0 011.415 0A5.983 5.983 0 0115 10a5.984 5.984 0 01-1.757 4.243 1 1 0 01-1.415-1.415A3.984 3.984 0 0013 10a3.983 3.983 0 00-1.172-2.828 1 1 0 010-1.415z" clip-rule="evenodd"></path>
+</svg>
+    </button>
+  </div>  
+</div>';}?>
+    <header>
+        <nav>
+            <h3 id="logo">Digi Musics</h3>
+            <img id="front2img" class="front2" onclick="document.getElementById('overlay').style.display='flex'; document.getElementById('front2img').style.display='none'; document.getElementById('playb1').style.display='none';" src="ondas-small.gif" alt="" srcset="">
+        </nav>
+
+        <section style="flex-direction:column;">
+                <div id="buttonc" class="buttonc">
+    <button class="btn">
+    <i id="playb1" class="fa fa-play-circle-o" onclick="play_s()"></i></button>
+    </div>
+            <div class="main">
+                <img class="front1" src="R.jpg" alt="" srcset="">
+                <h1 id="demo" class="head1">Click On Play Button</h1>
+                <!--<h1 class="head1">Feel The Music</h1>-->
+            </div>
+        </section>
+    </header>
+    <div class="slider"></div>
+    <div class="anim">
+    <div class="lineu">
+        <div class="circle" data-aos="fade-right">
+            <h1 style="color:Black;margin-top: 0.33rem;">T</h1>
+        </div>
+        <div class="circle" data-aos="fade-right">
+            <h1 style="color:black;margin-top: 0.33rem;">R</h1>
+        </div>
+        <div class="circle" data-aos="fade-right">
+            <h1 style="color:black;margin-top: 0.33rem;">E</h1>
+        </div>
+        <div class="circle" data-aos="fade-right">
+            <h1 style="color:black;margin-top: 0.33rem;">N</h1>
+        </div>
+        <div class="circle" data-aos="fade-left">
+            <h1 style="color:black;margin-top: 0.33rem;">D</h1>
+        </div>
+        <div class="circle" data-aos="fade-left">
+            <h1 style="color:black;margin-top: 0.33rem;">I</h1>
+        </div>
+        <div class="circle" data-aos="fade-left">
+            <h1 style="color:black;margin-top: 0.33rem;">N</h1>
+        </div>
+        
+        <div class="circle" data-aos="fade-left">
+            <h1 style="color:black;margin-top: 0.33rem;">G</h1>
+        </div>
+    </div>
+    <!--<img id="song" src="YL6Z.gif"></div>-->
+    <div class="search">
+    <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for songs.."><i class="fa fa-search"></i>
+    </div>
+    <div class="main_c">
+    <div class="content">
+        <div class="right">
+            
+            <div class="points" id="myUL">
+                <br><br>
+<?php
+    $sqlr = $db->query("SELECT * from music ORDER BY music_id DESC");
+            while ($data = $sqlr->fetch_assoc()){
+                echo '
+                <li class="pa point"  data-aos="fade-right"  ><br>
+                    <img src="'.$data['image'].'" onError="alert("jfgbk");" class="dp" id="dp'.$data['music_id'].'">
+                
+                        <div class="infos">'.$data['name'].'</div>
+                
+                        <button class="btne pa playb" id="play'.$data['music_id'].'">
+    <i class="fa fa-play-circle-o" id="fafa'.$data['music_id'].'" onclick="id ='.$data['music_id'].'; functoplay(id);" style="position:relative;"></i></button>
+    <button class="btne pa pauseb" id="pause'.$data['music_id'].'" style="font-size:0rem;"><i class="fa fa-pause-circle-o" style="position:relative; " onclick="id ='.$data['music_id'].'; functopause(id);"   ></i></button>
+    
+         
+                    
+                </li>
+                
+                ';
+            }
+
+
+
+
+?>
+            </div><br><br>
+            <div class="first-c">
+                <a style="text-decoration:none; color:black" href="#">&#169;Shreyansh Techz</a>
+                <a style="color:black; z-index:10000" href="https://aquacode.000webhostapp.com/">Join DigiInsta</a>
+                <a style="text-decoration:none; color:black" href="#">Click On Above Link To Join DIGI INSTA </a>
+                <a style="text-decoration:none; color:black" href="#">All Music Have A copyright</a><br><br><br><br>
+            </div>
+        </div>
+    </div>
+    <div id="overlay">
+        <a href="#" class="close" onclick="off()"></a>
+                <h3 id="head3">Upload Your Songs Here</h3>
+                <form id="form1" method="POST" action="" enctype="multipart/form-data">
+                    <input id="id" type="file" accept = ".mp3" hidden/ name="uploadfile" value="" />
+                    <img id='buttonid' style="pointer-events:auto;" src="love-song.png">
+                    <div class="loader" id="loader1" style="display:none;"></div><br>
+                    <hr>
+                    <h2 id="loaer" style="display:none;">
+                        Copy The image of the Song And Paste Here
+                    </h2>
+                    <img id='buttonid2' style="margin-bottom:12px; display:none;" src="w.png">
+                    <textarea id="captioninp" style="margin-top:10px;" type="text" placeholder="Paste The Image Link Here" name="caption"></textarea>
+                    <div>
+                        <button id="upload2" name="upload2">
+                            UPLOAD
+                        </button>
+                    </div>
+                </form>
+            </div>
+    </div>
+    </div>
+        <div class='box'>
+        <div class='wave -one'></div>
+        <div class='wave -two'></div>
+        <div class='wave -three'></div>
+    </div>
+    
+    
+    
+    
+    
+    
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.1.3/TweenMax.min.js" integrity="sha512-DkPsH9LzNzZaZjCszwKrooKwgjArJDiEjA5tTgr3YX4E6TYv93ICS8T41yFHJnnSmGpnf0Mvb5NhScYbwvhn2w==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.1.3/TimelineMax.min.js" integrity="sha512-0xrMWUXzEAc+VY7k48pWd5YT6ig03p4KARKxs4Bqxb9atrcn2fV41fWs+YXTKb8lD2sbPAmZMjKENiyzM/Gagw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="app.js"></script>
+    
+    <script>
+    var y = document.getElementsByClassName("playb");
+    var z = document.getElementsByClassName("pauseb");
+    var q = document.getElementsByClassName("dp");
+    var iop=document.getElementsByClassName("audioe");
+    var audiop = document.getElementsByClassName("audio-player");
+    var startaudio = document.getElementById('nam');
+    
+    
+    
+        function functoplay(id){
+        for (let i = 0; i < audiop.length; i++) {
+            y[i].style.fontSize="3rem";
+            z[i].style.fontSize="0rem";
+            q[i].style.border="none";
+            q[i].style.animation="none";
+        
+        }
+        document.getElementById('play'+id).style.fontSize="0";
+        document.getElementById('dp'+id).style.border="aquamarine 2px solid";
+        document.getElementById('pause'+id).style.fontSize="3rem";
+        document.getElementById('dp'+id).style.animation="rat 4s infinite";
+        document.getElementById('audio-icon'+id).style.animation="spin 2s infinite";
+        
+        for(let i=0 ; i<iop.length ; i++){
+            
+            if(iop.length-i==id){ console.log(id);}
+            else iop[i].pause();
+            
+        }
+        
+        
+        
+        document.getElementById('audio-player'+id).style.display="flex";
+    
+        
+        
+let playerButton = "234";
+      playerButton = document.getElementById('player'+id),
+      audio = document.getElementById('audio'+id),
+      timeline = document.getElementById('timeline'+id),
+      soundButton = document.getElementById('sound-button'+id),
+      console.log(timeline);
+      audio.play();
+      
+      playIcon = `
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="lightgreen">
+    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clip-rule="evenodd" />
+  </svg>
+      `,
+      pauseIcon = `
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="yellow">
+  <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zM7 8a1 1 0 012 0v4a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v4a1 1 0 102 0V8a1 1 0 00-1-1z" clip-rule="evenodd" />
+</svg>
+      `,
+      soundIcon = `
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="orange">
+  <path fill-rule="evenodd" d="M9.383 3.076A1 1 0 0110 4v12a1 1 0 01-1.707.707L4.586 13H2a1 1 0 01-1-1V8a1 1 0 011-1h2.586l3.707-3.707a1 1 0 011.09-.217zM14.657 2.929a1 1 0 011.414 0A9.972 9.972 0 0119 10a9.972 9.972 0 01-2.929 7.071 1 1 0 01-1.414-1.414A7.971 7.971 0 0017 10c0-2.21-.894-4.208-2.343-5.657a1 1 0 010-1.414zm-2.829 2.828a1 1 0 011.415 0A5.983 5.983 0 0115 10a5.984 5.984 0 01-1.757 4.243 1 1 0 01-1.415-1.415A3.984 3.984 0 0013 10a3.983 3.983 0 00-1.172-2.828 1 1 0 010-1.415z" clip-rule="evenodd" />
+</svg>`,
+      muteIcon = `
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="red">
+  <path fill-rule="evenodd" d="M9.383 3.076A1 1 0 0110 4v12a1 1 0 01-1.707.707L4.586 13H2a1 1 0 01-1-1V8a1 1 0 011-1h2.586l3.707-3.707a1 1 0 011.09-.217zM12.293 7.293a1 1 0 011.414 0L15 8.586l1.293-1.293a1 1 0 111.414 1.414L16.414 10l1.293 1.293a1 1 0 01-1.414 1.414L15 11.414l-1.293 1.293a1 1 0 01-1.414-1.414L13.586 10l-1.293-1.293a1 1 0 010-1.414z" clip-rule="evenodd" />
+</svg>`;
+playerButton.innerHTML = pauseIcon;
+function toggleAudio () {
+  if (audio.paused) {
+      document.getElementById('play'+id).style.fontSize="0";
+        document.getElementById('dp'+id).style.border="aquamarine 2px solid";
+        document.getElementById('pause'+id).style.fontSize="3rem";
+        document.getElementById('dp'+id).style.animation="rat 4s infinite";
+        document.getElementById('audio-icon'+id).style.animation="spin 2s infinite";
+    audio.play();
+    playerButton.innerHTML = pauseIcon;
+  } else {
+    audio.pause();
+    document.getElementById('pause'+id).style.fontSize="0";
+        document.getElementById('dp'+id).style.border="none";
+        document.getElementById('play'+id).style.fontSize="3rem";
+        document.getElementById('dp'+id).style.animation="none";
+        document.getElementById('audio-icon'+id).style.animation="none";
+    playerButton.innerHTML = playIcon;
+  }
+}
+
+playerButton.addEventListener('click', toggleAudio);
+
+function changeTimelinePosition () {
+  const percentagePosition = (100*audio.currentTime) / audio.duration;
+  timeline.style.backgroundSize = `${percentagePosition}% 100%`;
+  timeline.value = percentagePosition;
+}
+
+audio.ontimeupdate = changeTimelinePosition;
+
+function audioEnded () {
+  playerButton.innerHTML = playIcon;
+  let u=id-1;
+  console.log(u);
+  document.getElementById('pause'+id).style.fontSize="0";
+        document.getElementById('dp'+id).style.border="none";
+        document.getElementById('play'+id).style.fontSize="3rem";
+        document.getElementById('dp'+id).style.animation="none";
+        document.getElementById('audio-icon'+id).style.animation="none";
+        document.getElementById('audio-player'+id).style.display="none";
+  document.getElementById('fafa'+u).click();
+}
+
+audio.onended = audioEnded;
+
+function changeSeek () {
+  const time = (timeline.value * audio.duration) / 100;
+  audio.currentTime = time;
+}
+
+timeline.addEventListener('change', changeSeek);
+
+function toggleSound () {
+  audio.muted = !audio.muted;
+  soundButton.innerHTML = audio.muted ? muteIcon : soundIcon;
+}
+
+soundButton.addEventListener('click', toggleSound);
+}
+    function functopause(id){
+        // document.getElementById('dps'+id).pause();
+            // document.getElementById('player'+id).click();
+            audio = document.getElementById('audio'+id);
+            audio.pause();
+            document.getElementById('pause'+id).style.fontSize="0"; 
+        document.getElementById('play'+id).style.fontSize="3rem";
+        document.getElementById('dp'+id).style.border="none";
+        document.getElementById('dp'+id).style.animation="none";
+    }
+    function on() {
+  document.getElementById("overlay").style.display = "flex";
+}
+
+function off() {
+  document.getElementById("overlay").style.display = "none";
+  document.getElementById('front2img').style.display='block';
+  document.getElementById('playb1').style.display='block';
+}
+function off1(id) {
+  document.getElementById("audio-player"+id).style.display = "none";
+//   document.getElementById('front2img').style.display='block';
+//   document.getElementById('playb1').style.display='block';
+}
+           document.getElementById('buttonid').addEventListener('click', openDialog1);
+
+function openDialog1() {
+  document.getElementById('id').click();
+}
+document.getElementById('id').addEventListener('change', submitForm2);
+
+                function submitForm2() {
+              
+  document.getElementById('buttonid').style.display="none";
+  document.getElementById('loader1').style.display="block";
+//   document.getElementById('loader1').innerHTML="block";
+  
+  document.getElementById('loaer').style.display="block";
+  
+}
+
+                document.getElementById('pro1').addEventListener('click', openDialog);
+                function openDialog() {
+                    document.getElementById('filetype').click();
+                }
+                document.getElementById('filetype').addEventListener('change', submitForm);
+                function submitForm() {
+                    document.getElementById('submitbutton').click();
+                }
+                
+                
+                 $("#upload2").on('click', function() {
+                // alert("dhjfbhjdrsf");
+                var caption;
+                // np++;
+                // file = $("#id").val();
+                caption = $("#captioninp").val();
+                // console.log(caption);
+                // alert(file);
+                alert('Hi');
+                $.ajax({
+                    url: 'index.php',
+                    method: 'POST',
+                    dataType: 'text',
+                    data: {
+                        // np: np,
+                        caption: caption,
+                    },
+                    success: function(response) {
+                        alert("Posted");
+                    }
+                });
+            });
+            function myFunction() {
+  // Declare variables
+  var input, filter, ul, li, a, i, txtValue;
+  input = document.getElementById('myInput');
+  filter = input.value.toUpperCase();
+  ul = document.getElementById("myUL");
+  li = ul.getElementsByTagName('li');
+
+  // Loop through all list items, and hide those who don't match the search query
+  for (i = 0; i < li.length; i++) {
+    a = li[i].getElementsByClassName("infos")[0];
+    txtValue = a.textContent || a.innerText;
+    if (txtValue.toUpperCase().indexOf(filter) > -1) {
+      li[i].style.display = "";
+    } else {
+      li[i].style.display = "none";
+    }
+  }
+}
+</script>
+</body>
+
+</html>
